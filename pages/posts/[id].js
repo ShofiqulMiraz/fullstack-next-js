@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { API_BACKEND_URL } from "..";
 
 const SinglePost = ({ post }) => {
   return (
@@ -15,7 +16,7 @@ const SinglePost = ({ post }) => {
 };
 
 export async function getServerSideProps({ params }) {
-  const response = await fetch(`http://localhost:3000/api/posts/${params.id}`);
+  const response = await fetch(`${API_BACKEND_URL}/api/posts/${params.id}`);
   const data = await response.json();
   const post = data.data;
 

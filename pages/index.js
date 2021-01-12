@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+export const API_BACKEND_URL =
+  "https://fullstack-next-js.vercel.app" || "http://localhost:3000";
+
 const Index = ({ posts }) => (
   <>
     <h1>pets</h1>
@@ -15,7 +18,7 @@ const Index = ({ posts }) => (
 );
 
 export async function getServerSideProps() {
-  const response = await fetch(`http://localhost:3000/api/posts`);
+  const response = await fetch(`${API_BACKEND_URL}/api/posts`);
   const data = await response.json();
   const posts = data.data;
 
