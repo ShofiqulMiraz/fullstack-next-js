@@ -1,65 +1,25 @@
-import Link from 'next/link'
-import dbConnect from '../utils/dbConnect'
-import Pet from '../models/Pet'
+import Link from "next/link";
 
-const Index = ({ pets }) => (
+const Index = ({ posts }) => (
   <>
-    {/* Create a card for each pet */}
-    {pets.map((pet) => (
-      <div key={pet._id}>
-        <div className="card">
-          <img src={pet.image_url} />
-          <h5 className="pet-name">{pet.name}</h5>
-          <div className="main-content">
-            <p className="pet-name">{pet.name}</p>
-            <p className="owner">Owner: {pet.owner_name}</p>
-
-            {/* Extra Pet Info: Likes and Dislikes */}
-            <div className="likes info">
-              <p className="label">Likes</p>
-              <ul>
-                {pet.likes.map((data, index) => (
-                  <li key={index}>{data} </li>
-                ))}
-              </ul>
-            </div>
-            <div className="dislikes info">
-              <p className="label">Dislikes</p>
-              <ul>
-                {pet.dislikes.map((data, index) => (
-                  <li key={index}>{data} </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="btn-container">
-              <Link href="/[id]/edit" as={`/${pet._id}/edit`}>
-                <button className="btn edit">Edit</button>
-              </Link>
-              <Link href="/[id]" as={`/${pet._id}`}>
-                <button className="btn view">View</button>
-              </Link>
-            </div>
-          </div>
-        </div>
+    <h1>pets</h1>
+    {posts.map((post, index) => (
+      <div key={index}>
+        <h1> {post.title} </h1>
+        <Link href={`/posts/${encodeURIComponent(post._id)}`}>
+          <a>{post.title}</a>
+        </Link>
       </div>
     ))}
   </>
-)
+);
 
-/* Retrieves pet(s) data from mongodb database */
 export async function getServerSideProps() {
-  await dbConnect()
+  const response = await fetch(`http://localhost:3000/api/posts`);
+  const data = await response.json();
+  const posts = data.data;
 
-  /* find all the data in our database */
-  const result = await Pet.find({})
-  const pets = result.map((doc) => {
-    const pet = doc.toObject()
-    pet._id = pet._id.toString()
-    return pet
-  })
-
-  return { props: { pets: pets } }
+  return { props: { posts } };
 }
 
-export default Index
+export default Index;
