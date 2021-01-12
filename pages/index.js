@@ -5,7 +5,7 @@ export const API_BACKEND_URL =
 
 const Index = ({ posts }) => (
   <>
-    <h1>pets</h1>
+    <h1>Our Posts</h1>
     {posts.map((post, index) => (
       <div key={index}>
         <h1> {post.title} </h1>

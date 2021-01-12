@@ -7,8 +7,7 @@ const SinglePost = ({ post }) => {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <h1>single post page</h1>
-      <p> {post.title} </p>
+      <h1> {post.title} </h1>
       <p> {post.description} </p>
       <p> {post.author} </p>
     </>

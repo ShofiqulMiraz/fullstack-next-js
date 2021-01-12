@@ -1,5 +1,6 @@
 import dbConnect from "../../../utils/dbConnect";
 import Post from "../../../models/Postmodel";
+import { APIFeature } from "../../../utils/apiFeature";
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -9,7 +10,12 @@ export default async function handler(req, res) {
   switch (method) {
     case "GET":
       try {
-        const posts = await Post.find({});
+        const features = new APIFeature(Post.find(), req.query)
+          .filter()
+          .sort()
+          .limitFields()
+          .paginate();
+        const posts = await features.query;
         res.status(200).json({ success: true, data: posts });
       } catch (error) {
         res.status(400).json({ success: false });
