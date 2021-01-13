@@ -4,17 +4,25 @@ export const API_BACKEND_URL =
   "https://fullstack-next-js.vercel.app" || "http://localhost:3000";
 
 const Index = ({ posts }) => (
-  <>
-    <h1>Our Posts</h1>
-    {posts.map((post, index) => (
-      <div key={index}>
-        <h1> {post.title} </h1>
-        <Link href={`/posts/${encodeURIComponent(post._id)}`}>
-          <a>{post.title}</a>
-        </Link>
+  <div className="container">
+    <div className="row">
+      <div className="col-md-12">
+        <h1>Our Posts</h1>
+        {posts.map((post, index) => (
+          <div key={index}>
+            <div className="card mb-3">
+              <div className="card-body">
+                <h5 className="card-title">{post.title}</h5>
+                <Link href={`/posts/${encodeURIComponent(post._id)}`}>
+                  <a className="btn btn-primary">Read More</a>
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    ))}
-  </>
+    </div>
+  </div>
 );
 
 export async function getServerSideProps() {
