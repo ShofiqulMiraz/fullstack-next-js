@@ -1,28 +1,38 @@
+import Head from "next/head";
 import Link from "next/link";
 
 export const API_BACKEND_URL =
   "https://fullstack-next-js.vercel.app" || "http://localhost:3000";
 
 const Index = ({ posts }) => (
-  <div className="container">
-    <div className="row">
-      <div className="col-md-12">
-        <h1>Our Posts</h1>
-        {posts.map((post, index) => (
-          <div key={index}>
-            <div className="card mb-3">
-              <div className="card-body">
-                <h5 className="card-title">{post.title}</h5>
-                <Link href={`/posts/${encodeURIComponent(post._id)}`}>
-                  <a className="btn btn-primary">Read More</a>
-                </Link>
+  <>
+  <Head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        
+        <title>Full Stack Next Js</title>
+      </Head>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          <h1>Our Posts</h1>
+          {posts.map((post, index) => (
+            <div key={index}>
+              <div className="card mb-3">
+                <div className="card-body">
+                  <h5 className="card-title">{post.title}</h5>
+                  <Link href={`/posts/${encodeURIComponent(post._id)}`}>
+                    <a className="btn btn-primary">Read More</a>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
-  </div>
+  </>
 );
 
 export async function getServerSideProps() {
