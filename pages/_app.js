@@ -3,6 +3,7 @@ import Router from "next/router";
 import NProgress from "nprogress"; //nprogress module
 import "nprogress/nprogress.css"; //styles of nprogress
 import NavBar from "../components/NavBar/navbar";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 // spinner disabled
 NProgress.configure({ showSpinner: false });
@@ -32,12 +33,18 @@ function MyApp({ Component, pageProps }) {
         ></script>
         <title>Full Stack Next Js</title>
       </Head>
-      <div className="container-fluid">
-        <div className="row">
-          <NavBar />
-          <Component {...pageProps} />
+      <Auth0Provider
+        domain={process.env.AUTH0_DOMAIN}
+        clientId={process.env.AUTH0_CLIENT_ID}
+        redirectUri="/"
+      >
+        <div className="container-fluid">
+          <div className="row">
+            <NavBar />
+            <Component {...pageProps} />
+          </div>
         </div>
-      </div>
+      </Auth0Provider>
     </>
   );
 }

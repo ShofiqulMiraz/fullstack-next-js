@@ -29,9 +29,9 @@ const NavBar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="/register">
+              <Link href="/profile">
                 <a className="nav-link" aria-current="page">
-                  Register
+                  profile
                 </a>
               </Link>
             </li>

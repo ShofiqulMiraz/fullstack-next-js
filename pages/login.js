@@ -1,6 +1,8 @@
 import Head from "next/head";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Login = () => {
+  const { loginWithRedirect } = useAuth0();
   return (
     <>
       <Head>
@@ -11,7 +13,7 @@ const Login = () => {
 
       <div className="container">
         <div className="row">
-          <h1 className="text-center">Login page</h1>
+          <button className="btn btn-primary"onClick={() => loginWithRedirect()}>Log In</button>
         </div>
       </div>
     </>
