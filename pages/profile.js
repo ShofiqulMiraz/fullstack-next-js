@@ -6,13 +6,17 @@ const Profile = () => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
+  console.log(user);
 
   return (
-    isAuthenticated && (
-      <div>
-        <p>{user.email}</p>
-      </div>
-    )
+    <>
+      <h1> your dashboard </h1>
+      {isAuthenticated && (
+        <div>
+          <p>{user.email}</p>
+        </div>
+      )}
+    </>
   );
 };
 

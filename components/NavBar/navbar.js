@@ -31,7 +31,7 @@ const NavBar = () => {
             <li className="nav-item">
               <Link href="/profile">
                 <a className="nav-link" aria-current="page">
-                  profile
+                  Profile
                 </a>
               </Link>
             </li>

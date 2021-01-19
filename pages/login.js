@@ -13,7 +13,13 @@ const Login = () => {
 
       <div className="container">
         <div className="row">
-          <button className="btn btn-primary"onClick={() => loginWithRedirect()}>Log In</button>
+          <p className="text-center">Wanna Login?</p>
+          <button
+            className="btn btn-primary w-50 m-auto mt-5"
+            onClick={() => loginWithRedirect()}
+          >
+            Log In
+          </button>
         </div>
       </div>
     </>

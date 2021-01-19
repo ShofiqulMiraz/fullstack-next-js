@@ -34,9 +34,9 @@ function MyApp({ Component, pageProps }) {
         <title>Full Stack Next Js</title>
       </Head>
       <Auth0Provider
-        domain={process.env.AUTH0_DOMAIN}
-        clientId={process.env.AUTH0_CLIENT_ID}
-        redirectUri="/"
+        domain="shofiqulmiraz.us.auth0.com"
+        clientId="SKGLT5vPGlhIlGSjDQFYHKUZ3lrcR3hB"
+        redirectUri="https://fullstack-next-js.vercel.app/profile"
       >
         <div className="container-fluid">
           <div className="row">
