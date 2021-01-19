@@ -6,13 +6,12 @@ export const API_BACKEND_URL =
 
 const Index = ({ posts }) => (
   <>
-  <Head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        
-        <title>Full Stack Next Js</title>
-      </Head>
+      <title>Full Stack Next Js</title>
+    </Head>
     <div className="container">
       <div className="row">
         <div className="col-md-12">

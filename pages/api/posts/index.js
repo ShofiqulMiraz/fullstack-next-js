@@ -1,6 +1,7 @@
 import dbConnect from "../../../utils/dbConnect";
 import Post from "../../../models/Postmodel";
 import { APIFeature } from "../../../utils/apiFeature";
+import protect from "../../../api_middlewares/protect";
 
 export default async function handler(req, res) {
   const { method } = req;
